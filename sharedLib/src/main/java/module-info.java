@@ -2,6 +2,7 @@ module Splitwsie.sharedLib.main {
 	requires static lombok;
 	requires org.xerial.sqlitejdbc;
 	requires org.slf4j;
+	requires java.rmi;
 
 	exports pt.isec.pd.splitwise.sharedLib.database;
 	exports pt.isec.pd.splitwise.sharedLib.database.DAO;

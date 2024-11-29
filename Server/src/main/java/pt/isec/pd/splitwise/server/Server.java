@@ -12,6 +12,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.SocketException;
 
+//TODO: private → protected
 public class Server {
 	public static final int TIMEOUT_CLIENT_SOCKET = 60;
 	private static final Logger logger = LoggerFactory.getLogger(Server.class);
