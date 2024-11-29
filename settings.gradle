@@ -1,0 +1,6 @@
+rootProject.name = 'Splitwise_API'
+include('sharedLib')
+include('Server')
+include('Server_API_RMI')
+include('ClientAPI')
+include('ClientRMI')

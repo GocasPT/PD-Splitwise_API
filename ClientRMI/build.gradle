@@ -1,0 +1,11 @@
+plugins {
+    id 'application'
+}
+
+application {
+    mainClass = 'pt.isec.pd.splitwise.client_rmi.ClientRMI'
+}
+
+dependencies {
+    implementation project(':sharedLib')
+}
