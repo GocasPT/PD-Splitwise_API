@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 import pt.isec.pd.splitwise.server.Manager.HeartbeatManager;
 import pt.isec.pd.splitwise.server.Manager.SessionManager;
 import pt.isec.pd.splitwise.server.Runnable.ClientHandler;
+import pt.isec.pd.splitwise.server_api_rmi.rmi.RMIService;
 import pt.isec.pd.splitwise.sharedLib.database.DataBaseManager;
 
 import java.io.IOException;
@@ -20,6 +21,7 @@ public class Server {
 	private final SessionManager sessionManager;
 	private final DataBaseManager dbManager;
 	private final HeartbeatManager heartbeatManager;
+	private final RMIService rmiService;
 	private volatile boolean isRunning;
 
 	public Server(int listeningPort, String dbPath) {
@@ -32,6 +34,8 @@ public class Server {
 			if (!dbManager.addDBChangeObserver(heartbeatManager.getHeartbeatSender())) {
 				throw new RuntimeException("Failed to add observer to DataBaseManager"); //TODO: improve this
 			}
+
+			rmiService = new RMIService(dbManager);
 
 			start();
 		} catch ( IOException e ) {
