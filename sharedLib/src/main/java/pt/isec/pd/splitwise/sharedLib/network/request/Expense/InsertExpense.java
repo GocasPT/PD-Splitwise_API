@@ -45,6 +45,12 @@ public record InsertExpense(int groupID, double amount, String description, Loca
 			return new Response(false, "Failed to insert expense");
 		}
 
+		try {
+			context.getRmiObserver().onInsertExpense(inserterUserEmail, amount);
+		} catch ( Exception e ) {
+			logger.error("[RMI] InsertExpense: {}", e.getMessage());
+		}
+
 		return new Response(true);
 	}
 

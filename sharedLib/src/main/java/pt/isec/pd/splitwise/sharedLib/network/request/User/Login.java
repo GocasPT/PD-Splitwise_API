@@ -19,6 +19,12 @@ public record Login(String email, String password) implements Request {
 			return new Response(false, "Error on login");
 		}
 
+		try {
+			context.getRmiObserver().onLogin(email);
+		} catch ( Exception e ) {
+			logger.error("[RMI] Login: {}", e.getMessage());
+		}
+
 		return new Response(true);
 	}
 

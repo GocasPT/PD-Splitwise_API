@@ -9,9 +9,7 @@
         </processorPath>
         <module name="Splitwise_API.sharedLib.main" />
         <module name="pt.isec.pd.splitwise.Splitwise_API.Server.test" />
-        <module name="Splitwise_API.Server_API_RMI.main" />
         <module name="Splitwise_API.Server.main" />
-        <module name="pt.isec.pd.splitwise.Splitwise_API.Server_API_RMI.test" />
         <module name="pt.isec.pd.splitwise.Splitwise_API.sharedLib.test" />
       </profile>
     </annotationProcessing>

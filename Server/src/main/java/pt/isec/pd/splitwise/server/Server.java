@@ -9,13 +9,21 @@ import pt.isec.pd.splitwise.server.Runnable.ClientHandler;
 import pt.isec.pd.splitwise.sharedLib.database.DataBaseManager;
 
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.SocketException;
+import java.rmi.Naming;
+import java.rmi.RemoteException;
+import java.rmi.registry.LocateRegistry;
+import java.rmi.registry.Registry;
 
 public class Server {
 	public static final int TIMEOUT_CLIENT_SOCKET = 60;
 	private static final Logger logger = LoggerFactory.getLogger(Server.class);
+	private static final String RMI_REGISTRY = "localhost";
+	private static final int RMI_PORT = Registry.REGISTRY_PORT;
+
 	private final ServerSocket serverSocket;
 	private final SessionManager sessionManager;
 	private final DataBaseManager dbManager;
@@ -35,13 +43,25 @@ public class Server {
 			}
 
 			rmiService = new RMIService(dbManager);
+			registeRMIService(rmiService);
 
 			start();
+		} catch ( RemoteException e ) {
+			throw new RuntimeException("RemoteException in 'Server': " + e.getMessage()); //TODO: improve this
 		} catch ( IOException e ) {
 			throw new RuntimeException("IOException in 'Server': " + e.getMessage()); //TODO: improve this
 		} finally {
 			stop();
 		}
+	}
+
+	private void registeRMIService(RMIService rmiService) throws MalformedURLException, RemoteException {
+		LocateRegistry.createRegistry(RMI_PORT);
+
+		String registration = "rmi://" + RMI_REGISTRY + ":" + RMI_PORT + "/SplitwiseService";
+
+		//TODO: bind VS rebind
+		Naming.rebind(registration, rmiService);
 	}
 
 	private void start() {

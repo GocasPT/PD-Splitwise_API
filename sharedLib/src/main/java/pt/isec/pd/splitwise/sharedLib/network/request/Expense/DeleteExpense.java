@@ -16,6 +16,12 @@ public record DeleteExpense(int expenseID) implements Request {
 			return new Response(false, "Failed to delete expense");
 		}
 
+		try {
+			context.getRmiObserver().onDeleteExpense(expenseID);
+		} catch ( Exception e ) {
+			logger.error("[RMI] DeleteExpense: {}", e.getMessage());
+		}
+
 		return new Response(true);
 	}
 

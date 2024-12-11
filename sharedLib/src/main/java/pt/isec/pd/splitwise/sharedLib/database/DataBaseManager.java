@@ -6,6 +6,7 @@ import org.slf4j.LoggerFactory;
 import pt.isec.pd.splitwise.sharedLib.database.DAO.*;
 import pt.isec.pd.splitwise.sharedLib.database.Observer.DatabaseChangeObserver;
 import pt.isec.pd.splitwise.sharedLib.database.Observer.NotificationObserver;
+import pt.isec.pd.splitwise.sharedLib.database.Observer.RMIObserver;
 import pt.isec.pd.splitwise.sharedLib.network.response.NotificaionResponse;
 
 import java.io.File;
@@ -30,6 +31,7 @@ public class DataBaseManager {
 	@Getter private final ExpenseUserDAO expenseUserDAO;
 	@Getter private final PaymentDAO paymentDAO;
 	private DatabaseChangeObserver databaseChangeObserver;
+	@Getter private RMIObserver rmiObserver;
 
 	public DataBaseManager(String dbPath, NotificationObserver notificationObserver) {
 		logger.debug("Database path: {}", dbPath);
@@ -177,6 +179,17 @@ public class DataBaseManager {
 		}
 
 		databaseChangeObserver = observer;
+		return true;
+	}
+
+	public boolean addRMIChangeObserver(RMIObserver observer) {
+		logger.debug("Setting RMI observer {}", observer);
+		if (rmiObserver != null) {
+			logger.error("RMI observer already set");
+			return false; //TODO: throw exception (?)
+		}
+
+		rmiObserver = observer;
 		return true;
 	}
 

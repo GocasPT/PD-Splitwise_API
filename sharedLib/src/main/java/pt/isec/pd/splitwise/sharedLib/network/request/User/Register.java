@@ -5,6 +5,7 @@ import pt.isec.pd.splitwise.sharedLib.database.DataBaseManager;
 import pt.isec.pd.splitwise.sharedLib.network.request.Request;
 import pt.isec.pd.splitwise.sharedLib.network.response.Response;
 
+import java.rmi.RemoteException;
 import java.sql.SQLException;
 
 public record Register(String username, String email, String phoneNumber, String password) implements Request {
@@ -28,6 +29,12 @@ public record Register(String username, String email, String phoneNumber, String
 		} catch ( Exception e ) {
 			logger.error("Register: {}", e.getMessage());
 			return new Response(false, "Error registering user");
+		}
+
+		try {
+			context.getRmiObserver().onRegiste(email);
+		} catch ( RemoteException e ) {
+			logger.error("[RMI] Register: {}", e.getMessage());
 		}
 
 		return new Response(true);
