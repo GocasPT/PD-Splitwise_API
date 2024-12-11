@@ -4,8 +4,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import pt.isec.pd.splitwise.server.Manager.HeartbeatManager;
 import pt.isec.pd.splitwise.server.Manager.SessionManager;
+import pt.isec.pd.splitwise.server.RMI.RMIService;
 import pt.isec.pd.splitwise.server.Runnable.ClientHandler;
-import pt.isec.pd.splitwise.server_api_rmi.rmi.RMIService;
 import pt.isec.pd.splitwise.sharedLib.database.DataBaseManager;
 
 import java.io.IOException;
@@ -13,7 +13,6 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.SocketException;
 
-//TODO: private → protected
 public class Server {
 	public static final int TIMEOUT_CLIENT_SOCKET = 60;
 	private static final Logger logger = LoggerFactory.getLogger(Server.class);

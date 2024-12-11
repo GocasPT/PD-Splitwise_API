@@ -1,9 +1,6 @@
-package pt.isec.pd.splitwise.server_api_rmi.rmi;
+package pt.isec.pd.splitwise.server.RMI;
 
 import pt.isec.pd.splitwise.sharedLib.database.DataBaseManager;
-import pt.isec.pd.splitwise.sharedLib.network.request.User.GetUsers;
-import pt.isec.pd.splitwise.sharedLib.network.response.ListResponse;
-import pt.isec.pd.splitwise.sharedLib.network.response.Response;
 import pt.isec.pd.splitwise.sharedLib.rmi.OberserverServiceInterface;
 import pt.isec.pd.splitwise.sharedLib.rmi.SplitwiseServiceInterface;
 

@@ -3,7 +3,12 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/ClientAPI/Splitwise_API.ClientAPI.main.iml" filepath="$PROJECT_DIR$/.idea/modules/ClientAPI/Splitwise_API.ClientAPI.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ClientAPI/Splitwise_API.ClientAPI.test.iml" filepath="$PROJECT_DIR$/.idea/modules/ClientAPI/Splitwise_API.ClientAPI.test.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/ClientRMI/Splitwise_API.ClientRMI.main.iml" filepath="$PROJECT_DIR$/.idea/modules/ClientRMI/Splitwise_API.ClientRMI.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ClientRMI/Splitwise_API.ClientRMI.test.iml" filepath="$PROJECT_DIR$/.idea/modules/ClientRMI/Splitwise_API.ClientRMI.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Server/Splitwise_API.Server.test.iml" filepath="$PROJECT_DIR$/.idea/modules/Server/Splitwise_API.Server.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Server_API_RMI/Splitwise_API.Server_API_RMI.test.iml" filepath="$PROJECT_DIR$/.idea/modules/Server_API_RMI/Splitwise_API.Server_API_RMI.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/sharedLib/Splitwise_API.sharedLib.test.iml" filepath="$PROJECT_DIR$/.idea/modules/sharedLib/Splitwise_API.sharedLib.test.iml" />
     </modules>
   </component>
 </project>
