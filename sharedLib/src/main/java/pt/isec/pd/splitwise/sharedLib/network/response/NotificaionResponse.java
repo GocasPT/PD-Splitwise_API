@@ -5,6 +5,7 @@ import lombok.Getter;
 @Getter
 public class NotificaionResponse extends Response {
 	private final String email;
+
 	private final String notifyDescription;
 
 	public NotificaionResponse(String email, String text) {

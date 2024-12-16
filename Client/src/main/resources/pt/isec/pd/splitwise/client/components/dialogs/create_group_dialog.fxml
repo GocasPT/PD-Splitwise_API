@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ButtonType?>
+<?import javafx.scene.control.DialogPane?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+<DialogPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/20.0.1">
+    <content>
+        <HBox alignment="CENTER_LEFT" spacing="5.0">
+            <Label text="Group name:">
+                <font>
+                    <Font size="13.0"/>
+                </font>
+            </Label>
+            <TextField fx:id="tfGroupName"/>
+        </HBox>
+    </content>
+    <ButtonType fx:constant="FINISH" fx:id="btnFinish"/>
+</DialogPane>

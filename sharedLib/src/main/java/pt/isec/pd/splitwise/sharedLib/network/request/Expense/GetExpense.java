@@ -9,7 +9,8 @@ import pt.isec.pd.splitwise.sharedLib.network.response.Response;
 import pt.isec.pd.splitwise.sharedLib.network.response.ValueResponse;
 
 public record GetExpense(int expenseId) implements Request {
-	@Override public Response execute(DataBaseManager context) {
+	@Override
+	public Response execute(DataBaseManager context) {
 		logger.debug("Getting expense with id {}", expenseId);
 
 		try {
@@ -17,7 +18,7 @@ public record GetExpense(int expenseId) implements Request {
 
 			logger.debug("Got expense with id {}", expenseId);
 
-			if ( expense == null ) {
+			if (expense == null) {
 				logger.error("Expense with id {} not found", expenseId);
 				return new ValueResponse<>("Expense with id " + expenseId + " not found");
 			}
@@ -44,7 +45,8 @@ public record GetExpense(int expenseId) implements Request {
 		}
 	}
 
-	@Override public String toString() {
+	@Override
+	public String toString() {
 		return "GET_EXPENSE " + expenseId;
 	}
 }

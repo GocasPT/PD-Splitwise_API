@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.dlsc.gemsfx.CalendarPicker?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import org.controlsfx.control.CheckComboBox?>
+<DialogPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/20.0.1">
+    <content>
+        <VBox alignment="TOP_CENTER" maxWidth="-Infinity" spacing="8.0" BorderPane.alignment="CENTER">
+            <padding>
+                <Insets top="64.0"/>
+            </padding>
+            <HBox alignment="CENTER_LEFT" spacing="8.0">
+                <Label minHeight="-Infinity" minWidth="-Infinity" text="Amount:">
+                    <font>
+                        <Font size="14.0"/>
+                    </font>
+                </Label>
+                <TextField fx:id="tfAmount" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS"/>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="254.0" spacing="8.0">
+                <Label minHeight="-Infinity" minWidth="-Infinity" text="Description:" HBox.hgrow="ALWAYS">
+                    <font>
+                        <Font size="14.0"/>
+                    </font>
+                </Label>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="208.0" spacing="8.0">
+                <Label minHeight="-Infinity" minWidth="-Infinity" text="Date:">
+                    <font>
+                        <Font size="14.0"/>
+                    </font>
+                </Label>
+                <CalendarPicker fx:id="datePicker" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS"/>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="350.0" spacing="8.0">
+                <Label minHeight="-Infinity" minWidth="-Infinity" text="Payer:">
+                    <font>
+                        <Font size="14.0"/>
+                    </font>
+                </Label>
+                <ComboBox fx:id="cbPayerUser" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS"/>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="369.0" spacing="8.0">
+                <Label minHeight="-Infinity" minWidth="-Infinity" text="User associated:">
+                    <font>
+                        <Font size="14.0"/>
+                    </font>
+                </Label>
+                <CheckComboBox fx:id="ccbAssociatedUsers" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS"/>
+            </HBox>
+            <BorderPane.margin>
+                <Insets left="64.0" right="64.0"/>
+            </BorderPane.margin>
+        </VBox>
+    </content>
+    <ButtonType fx:constant="FINISH" fx:id="btnFinish"/>
+</DialogPane>

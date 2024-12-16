@@ -1,0 +1,53 @@
+plugins {
+    id 'application'
+    id 'io.freefair.lombok'
+    id 'org.openjfx.javafxplugin'
+}
+
+application {
+    mainClass = 'pt.isec.pd.splitwise.client.ClientApp'
+}
+
+javafx {
+    version = '21'
+    modules = ['javafx.controls', 'javafx.fxml', 'javafx.web', 'javafx.swing']
+}
+
+repositories {
+    maven { url "https://sandec.jfrog.io/artifactory/repo" }
+}
+
+dependencies {
+    implementation project(':sharedLib')
+
+    implementation('org.controlsfx:controlsfx:11.2.1') {
+        exclude(group: 'org.openjfx')
+    }
+    implementation('com.dlsc.formsfx:formsfx-core:11.6.0') {
+        exclude(group: 'org.openjfx')
+    }
+    implementation('net.synedra:validatorfx:0.5.1') {
+        exclude(group: 'org.openjfx')
+    }
+    implementation('org.kordamp.ikonli:ikonli-javafx:12.3.1') {
+        exclude(group: 'org.openjfx')
+    }
+    implementation('org.kordamp.ikonli:ikonli-bootstrapicons-pack:12.3.1') {
+        exclude(group: 'org.openjfx')
+    }
+    implementation('org.kordamp.ikonli:ikonli-devicons-pack:12.3.1') {
+        exclude(group: 'org.openjfx')
+    }
+    implementation('org.kordamp.bootstrapfx:bootstrapfx-core:0.4.0') {
+        exclude(group: 'org.openjfx')
+    }
+    implementation('eu.hansolo:tilesfx:21.0.9') {
+        exclude(group: 'org.openjfx')
+    }
+    implementation('com.dlsc.gemsfx:gemsfx:2.67.0') {
+        exclude(group: 'org.openjfx')
+    }
+    implementation('com.dlsc.phonenumberfx:phonenumberfx:1.12.1') {
+        exclude(group: 'org.openjfx')
+    }
+}

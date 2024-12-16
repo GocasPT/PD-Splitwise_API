@@ -11,8 +11,12 @@ import java.time.LocalDate;
 @EqualsAndHashCode(callSuper = true)
 public final class Payment extends Entity {
 	private int groupId;
+
 	private double amount;
+
 	private LocalDate date;
+
 	private String fromUser; //TODO: email → pair<username, userEmail>
+
 	private String toUser; //TODO: email → pair<username, userEmail>
 }

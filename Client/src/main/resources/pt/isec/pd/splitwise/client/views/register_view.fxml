@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.dlsc.phonenumberfx.PhoneNumberField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" fx:id="registerPane" prefHeight="600.0" prefWidth="400.0"
+            xmlns="http://javafx.com/javafx/20.0.1"
+            fx:controller="pt.isec.pd.splitwise.client.ui.controller.view.RegisterController">
+    <VBox alignment="TOP_CENTER" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+          AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <ImageView fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" scaleX="0.9"
+                   scaleY="0.9">
+            <image>
+                <Image url="@../img/logo.png"/>
+            </image>
+        </ImageView>
+        <TextField fx:id="tfUsername" promptText="Enter username"/>
+        <PhoneNumberField fx:id="tfPhoneNumber" promptText="Phone number"/>
+        <TextField fx:id="tfEmail" promptText="Enter email"/>
+        <PasswordField fx:id="tfPassword" promptText="Enter password"/>
+        <Button fx:id="btnRegiste" mnemonicParsing="false" text="Registe"/>
+        <Hyperlink fx:id="hpSignIn" text="Sign in"/>
+        <padding>
+            <Insets left="100.0" right="100.0" top="25.0"/>
+        </padding>
+    </VBox>
+</AnchorPane>

@@ -1,8 +1,7 @@
 package pt.isec.pd.splitwise.sharedLib.database;
 
 import lombok.Getter;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import pt.isec.pd.splitwise.sharedLib.database.DAO.*;
 import pt.isec.pd.splitwise.sharedLib.database.Observer.DatabaseChangeObserver;
 import pt.isec.pd.splitwise.sharedLib.database.Observer.NotificationObserver;
@@ -17,8 +16,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+@Slf4j
 public class DataBaseManager {
-	private static final Logger logger = LoggerFactory.getLogger(DataBaseManager.class);
 	private final String dbPath;
 	private final Connection conn;
 	private final NotificationObserver notificationObserver;
@@ -30,20 +29,21 @@ public class DataBaseManager {
 	@Getter private final ExpenseDAO expenseDAO;
 	@Getter private final ExpenseUserDAO expenseUserDAO;
 	@Getter private final PaymentDAO paymentDAO;
+
 	private DatabaseChangeObserver databaseChangeObserver;
 	@Getter private RMIObserver rmiObserver;
 
 	public DataBaseManager(String dbPath, NotificationObserver notificationObserver) {
-		logger.debug("Database path: {}", dbPath);
+		log.debug("Database path: {}", dbPath);
 		this.dbPath = dbPath;
 
-		logger.info("Initializing database...");
+		log.info("Initializing database...");
 
 		try {
 			//Note: getConnection() will create the database if it doesn't exist
 			conn = DriverManager.getConnection("jdbc:sqlite:" + this.dbPath);
 
-			logger.debug("Connected to the database");
+			log.debug("Connected to the database");
 
 			syncManager = new DatabaseSyncManager();
 			createTables(conn);
@@ -59,7 +59,7 @@ public class DataBaseManager {
 		} catch ( SQLException e ) {
 			throw new RuntimeException("SQLException: " + e.getMessage()); //TODO: improve error message
 		}
-		logger.debug("Setting notification observer {}", notificationObserver);
+		log.debug("Setting notification observer {}", notificationObserver);
 		this.notificationObserver = notificationObserver;
 	}
 
@@ -127,18 +127,18 @@ public class DataBaseManager {
 			//language=SQLite
 			stmt.executeUpdate("""
 			                   CREATE TABLE IF NOT EXISTS expenses
-		                       (
-		                          id                    INTEGER PRIMARY KEY AUTOINCREMENT,
-		                          group_id              INTEGER NOT NULL,
-		                          amount                REAL    NOT NULL,
-		                          description           TEXT    NOT NULL,
-		                          date                  TEXT    NOT NULL,
-		                          paid_by_user_id       INTEGER NOT NULL,
-		                          inserted_by_user_id   INTEGER NOT NULL,
-		                          FOREIGN KEY (group_id) REFERENCES groups (id),
-		                          FOREIGN KEY (paid_by_user_id) REFERENCES users (id),
-		                          FOREIGN KEY (inserted_by_user_id) REFERENCES users (id)
-		                       )
+			                      (
+			                         id                    INTEGER PRIMARY KEY AUTOINCREMENT,
+			                         group_id              INTEGER NOT NULL,
+			                         amount                REAL    NOT NULL,
+			                         description           TEXT    NOT NULL,
+			                         date                  TEXT    NOT NULL,
+			                         paid_by_user_id       INTEGER NOT NULL,
+			                         inserted_by_user_id   INTEGER NOT NULL,
+			                         FOREIGN KEY (group_id) REFERENCES groups (id),
+			                         FOREIGN KEY (paid_by_user_id) REFERENCES users (id),
+			                         FOREIGN KEY (inserted_by_user_id) REFERENCES users (id)
+			                      )
 			                   """);
 
 			//language=SQLite
@@ -172,9 +172,9 @@ public class DataBaseManager {
 	}
 
 	public boolean addDBChangeObserver(DatabaseChangeObserver observer) {
-		logger.debug("Setting database change observer {}", observer);
+		log.debug("Setting database change observer {}", observer);
 		if (databaseChangeObserver != null) {
-			logger.error("Database change observer already set");
+			log.error("Database change observer already set");
 			return false; //TODO: throw exception (?)
 		}
 
@@ -183,9 +183,9 @@ public class DataBaseManager {
 	}
 
 	public boolean addRMIChangeObserver(RMIObserver observer) {
-		logger.debug("Setting RMI observer {}", observer);
+		log.debug("Setting RMI observer {}", observer);
 		if (rmiObserver != null) {
-			logger.error("RMI observer already set");
+			log.error("RMI observer already set");
 			return false; //TODO: throw exception (?)
 		}
 
@@ -228,7 +228,7 @@ public class DataBaseManager {
 					try {
 						conn.rollback();
 					} catch ( SQLException rollbackEx ) {
-						logger.error("Error rolling back transaction", rollbackEx);
+						log.error("Error rolling back transaction", rollbackEx);
 					}
 					throw e;
 				} finally {
@@ -243,7 +243,7 @@ public class DataBaseManager {
 
 	private void incrementVersion(Connection conn) throws SQLException {
 		int newVersion = getVersion() + 1;
-		logger.debug("Incrementing version from {} to {}", getVersion(), newVersion);
+		log.debug("Incrementing version from {} to {}", getVersion(), newVersion);
 		//language=SQLite
 		PreparedStatement pstmt = conn.prepareStatement("UPDATE version SET value = ?");
 		pstmt.setInt(1, newVersion);
@@ -257,7 +257,7 @@ public class DataBaseManager {
 	}
 
 	public int getVersion() {
-		logger.debug("Getting version");
+		log.debug("Getting version");
 		int version = -1;
 		//language=SQLite
 		String query = "SELECT * FROM version;";
@@ -266,10 +266,10 @@ public class DataBaseManager {
 			List<Map<String, Object>> rs = executeRead(query);
 			version = (int) rs.getFirst().get("value");
 		} catch ( SQLException e ) {
-			logger.error("Getting version: {}", e.getMessage());
+			log.error("Getting version: {}", e.getMessage());
 		}
 
-		logger.debug("Current version: {}", version);
+		log.debug("Current version: {}", version);
 
 		return version;
 	}
@@ -322,7 +322,7 @@ public class DataBaseManager {
 					try {
 						conn.rollback();
 					} catch ( SQLException rollbackEx ) {
-						logger.error("Error rolling back transaction", rollbackEx);
+						log.error("Error rolling back transaction", rollbackEx);
 					}
 					throw e;
 				} finally {
@@ -337,7 +337,7 @@ public class DataBaseManager {
 
 	//TODO: this trigger should be on DataBaseManger (?)
 	public void triggerNotification(String email, String text) {
-		logger.debug("Triggering notification for {} ({})", email, notificationObserver);
+		log.debug("Triggering notification for {} ({})", email, notificationObserver);
 		if (notificationObserver == null) return; //TODO: throw exception (?)
 
 		NotificaionResponse notification = new NotificaionResponse(email, text);

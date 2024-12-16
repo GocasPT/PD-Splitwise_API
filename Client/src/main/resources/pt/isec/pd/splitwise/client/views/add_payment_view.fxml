@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.dlsc.gemsfx.CalendarPicker?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+            prefHeight="600.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/20.0.1"
+            fx:controller="pt.isec.pd.splitwise.client.ui.controller.view.AddPaymentController">
+    <top>
+        <VBox alignment="TOP_CENTER" spacing="8.0" BorderPane.alignment="CENTER">
+            <padding>
+                <Insets top="8.0"/>
+            </padding>
+            <Text fx:id="txtGroupName" strokeType="OUTSIDE" strokeWidth="0.0" text="[GROUP NAME]"
+                  textAlignment="CENTER">
+                <font>
+                    <Font name="System Bold" size="18.0"/>
+                </font>
+            </Text>
+            <Separator prefWidth="200.0"/>
+        </VBox>
+    </top>
+    <center>
+        <VBox alignment="TOP_CENTER" maxWidth="-Infinity" spacing="8.0" BorderPane.alignment="CENTER">
+            <padding>
+                <Insets top="64.0"/>
+            </padding>
+            <HBox alignment="CENTER_LEFT" spacing="8.0">
+                <Label minHeight="-Infinity" minWidth="-Infinity" text="Amount:">
+                    <font>
+                        <Font size="14.0"/>
+                    </font>
+                </Label>
+                <TextField fx:id="tfAmount" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS"/>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="208.0" spacing="8.0">
+                <Label minHeight="-Infinity" minWidth="-Infinity" text="Date:">
+                    <font>
+                        <Font size="14.0"/>
+                    </font>
+                </Label>
+                <CalendarPicker fx:id="datePicker" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS"/>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="350.0" spacing="8.0">
+                <Label minHeight="-Infinity" minWidth="-Infinity" text="From">
+                    <font>
+                        <Font size="14.0"/>
+                    </font>
+                </Label>
+                <ComboBox fx:id="cbFromUser" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS"/>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="141.0" spacing="8.0">
+                <Label minHeight="-Infinity" minWidth="-Infinity" text="To">
+                    <font>
+                        <Font size="14.0"/>
+                    </font>
+                </Label>
+                <ComboBox fx:id="cbToUser" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS"/>
+            </HBox>
+            <BorderPane.margin>
+                <Insets left="64.0" right="64.0"/>
+            </BorderPane.margin>
+        </VBox>
+    </center>
+    <bottom>
+        <VBox alignment="BOTTOM_CENTER" spacing="8.0" BorderPane.alignment="CENTER">
+            <BorderPane.margin>
+                <Insets/>
+            </BorderPane.margin>
+            <padding>
+                <Insets bottom="12.0"/>
+            </padding>
+            <Separator prefWidth="200.0"/>
+            <HBox fx:id="hbBtn" alignment="BOTTOM_CENTER" spacing="12.0">
+                <Button fx:id="btnAdd" mnemonicParsing="false" text="Add">
+                    <font>
+                        <Font size="14.0"/>
+                    </font>
+                </Button>
+                <Button fx:id="btnCancel" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" text="Cancel">
+                    <font>
+                        <Font size="14.0"/>
+                    </font>
+                </Button>
+            </HBox>
+        </VBox>
+    </bottom>
+</BorderPane>

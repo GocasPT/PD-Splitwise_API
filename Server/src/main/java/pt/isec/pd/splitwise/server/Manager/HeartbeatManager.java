@@ -12,13 +12,19 @@ import java.net.*;
 
 public class HeartbeatManager {
 	private static final Logger logger = LoggerFactory.getLogger(HeartbeatManager.class);
+
 	private final String MULTICAST_ADDRESS = "230.44.44.44";
+
 	private final int MULTICAST_PORT = 4444;
+
 	private final MulticastSocket multicastSocket;
+
 	private final ServerSocket backupServerSocket;
+
 	private final InetAddress group = InetAddress.getByName(MULTICAST_ADDRESS);
 	@Getter private final HeartbeatSender heartbeatSender;
 	@Getter private final BackupServerReceiver backupServerReceiver;
+
 	private boolean isRunning;
 
 	public HeartbeatManager(boolean isRunning, DataBaseManager dbManager) throws IOException {

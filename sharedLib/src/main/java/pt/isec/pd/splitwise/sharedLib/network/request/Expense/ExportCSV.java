@@ -19,7 +19,7 @@ public record ExportCSV(int groupID) implements Request {
 		logger.debug("Exporting expenses from group {}", groupID);
 
 		File csvFile = new File("expenses.csv");
-		try (FileWriter writer = new FileWriter(csvFile)) {
+		try ( FileWriter writer = new FileWriter(csvFile) ) {
 			writer.write("\"Nome do grupo\" \"");
 			Group group = context.getGroupDAO().getGroupById(groupID);
 			writer.write(group.getName());
@@ -35,7 +35,8 @@ public record ExportCSV(int groupID) implements Request {
 			}
 			writer.write("\"\n");
 
-			writer.write("\"Data\"; \"Responsável pelo registo da despesa\"; \"Valor\";\"Pago por\";\"A dividir com\"\n");
+			writer.write(
+					"\"Data\"; \"Responsável pelo registo da despesa\"; \"Valor\";\"Pago por\";\"A dividir com\"\n");
 
 			List<Expense> expenseList = context.getExpenseDAO().getAllExpensesFromGroup(groupID);
 			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");

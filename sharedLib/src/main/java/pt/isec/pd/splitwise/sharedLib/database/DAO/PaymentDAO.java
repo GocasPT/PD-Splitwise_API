@@ -5,13 +5,11 @@ import pt.isec.pd.splitwise.sharedLib.database.DataBaseManager;
 import pt.isec.pd.splitwise.sharedLib.database.Entity.Payment;
 
 import java.sql.SQLException;
-import java.time.Instant;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.TimeZone;
 
 public class PaymentDAO extends DAO {
 	public PaymentDAO(DataBaseManager dbManager) {

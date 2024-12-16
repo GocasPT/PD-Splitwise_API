@@ -13,6 +13,8 @@ import java.io.Serializable;
 @Builder
 public final class PreviewGroupDTO implements Serializable {
 	private int id;
+
 	private String name;
-	private int membersNumber;
+
+	private int numUsers;
 }

@@ -17,11 +17,17 @@ import java.net.ServerSocket;
 
 public class HeartbeatSender extends Thread implements DatabaseChangeObserver {
 	private static final Logger logger = LoggerFactory.getLogger(HeartbeatSender.class);
+
 	private final int HEARTBEAT_INTERVAL = 10;
+
 	private final MulticastSocket multicastSocket;
+
 	private final InetAddress group;
+
 	private final ServerSocket backupServerSocket;
+
 	private final DataBaseManager dbManager;
+
 	private final boolean isRunning;
 
 	public HeartbeatSender(boolean isRunning, MulticastSocket multicastSocket, InetAddress group, ServerSocket backupServerSocket, DataBaseManager dbManager) {

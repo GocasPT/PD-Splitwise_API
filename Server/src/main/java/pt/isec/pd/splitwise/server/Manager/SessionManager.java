@@ -16,6 +16,7 @@ import java.util.Map;
 
 public class SessionManager implements NotificationObserver {
 	private static final Logger logger = LoggerFactory.getLogger(SessionManager.class);
+
 	private final Map<String, List<ClientHandler>> sessions = new HashMap<>();
 
 	public void addSession(String userId, ClientHandler handler) {
@@ -25,16 +26,6 @@ public class SessionManager implements NotificationObserver {
 			sessions.get(userId).add(handler);
 		else
 			sessions.put(userId, new ArrayList<>(List.of(handler)));
-
-		showSessions();
-	}
-
-	public void removeSession(String userId, ClientHandler handler) {
-		logger.debug("Removing session for user {}", userId);
-
-		sessions.get(userId).remove(handler);
-		if (sessions.get(userId).isEmpty())
-			sessions.remove(userId);
 
 		showSessions();
 	}
@@ -49,6 +40,16 @@ public class SessionManager implements NotificationObserver {
 								             .toList(),
 						             "\n"
 				             ));
+	}
+
+	public void removeSession(String userId, ClientHandler handler) {
+		logger.debug("Removing session for user {}", userId);
+
+		sessions.get(userId).remove(handler);
+		if (sessions.get(userId).isEmpty())
+			sessions.remove(userId);
+
+		showSessions();
 	}
 
 	@Override

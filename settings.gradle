@@ -1,6 +1,7 @@
 rootProject.name = 'Splitwise_API'
 include('sharedLib')
 include('Server')
-include('Server_API_RMI')
+include('ServerAPI')
+include('Client')
 include('ClientAPI')
 include('ClientRMI')

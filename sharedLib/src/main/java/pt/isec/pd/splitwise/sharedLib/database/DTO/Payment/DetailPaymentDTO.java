@@ -14,8 +14,12 @@ import java.time.LocalDate;
 @Builder
 public final class DetailPaymentDTO implements Serializable { //TODO: i need this class?
 	private int id;
+
 	private double amount;
+
 	private LocalDate date;
+
 	private String fromUser;
+
 	private String toUser;
 }

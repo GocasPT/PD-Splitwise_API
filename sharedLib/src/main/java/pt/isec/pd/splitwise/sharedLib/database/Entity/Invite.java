@@ -9,6 +9,8 @@ import lombok.experimental.SuperBuilder;
 @EqualsAndHashCode(callSuper = true)
 public final class Invite extends Entity {
 	private int groupId;
+
 	private String guestUserEmail;
+
 	private String hostUserEmail; //TODO host OR inviter?
 }

@@ -13,8 +13,11 @@ import java.net.SocketException;
 
 public class BackupServerReceiver extends Thread {
 	private static final Logger logger = LoggerFactory.getLogger(BackupServerReceiver.class);
+
 	private final ServerSocket serverSocket;
+
 	private final DataBaseManager context;
+
 	private final boolean isRunning;
 
 	public BackupServerReceiver(boolean isRunning, ServerSocket serverSocket, DataBaseManager context) {

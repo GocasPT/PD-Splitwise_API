@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.*?>
+<fx:root xmlns:fx="http://javafx.com/fxml/1" spacing="8" styleClass="card" stylesheets="@../styles/card.css"
+         type="javafx.scene.layout.VBox" xmlns="http://javafx.com/javafx/20.0.1">
+
+    <padding>
+        <Insets bottom="16" left="16" right="16" top="16"/>
+    </padding>
+
+    <HBox fx:id="headerBox" alignment="CENTER_LEFT" spacing="12">
+        <VBox spacing="4">
+            <HBox alignment="CENTER_LEFT" spacing="8">
+                <Label fx:id="titleLabel" styleClass="card-title" text="[TITLE]"/>
+                <Label fx:id="subtitleLabel" styleClass="card-subtitle" text="[SUBTITLE]"/>
+            </HBox>
+            <Label fx:id="headerDescriptionLabel" styleClass="card-header-description" text="[HEADER DESCRIPTION]"
+                   wrapText="true"/>
+        </VBox>
+    </HBox>
+
+    <StackPane fx:id="mediaBox" managed="false" visible="false" VBox.vgrow="ALWAYS"/>
+
+    <VBox fx:id="contentBox" spacing="8">
+        <Label fx:id="descriptionLabel" styleClass="card-description" text="[DESCRIPTION]" wrapText="true"/>
+    </VBox>
+
+    <HBox fx:id="footerBox" alignment="CENTER_RIGHT" managed="false" spacing="8" visible="false">
+        <padding>
+            <Insets top="8"/>
+        </padding>
+    </HBox>
+
+</fx:root>

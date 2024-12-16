@@ -15,10 +15,16 @@ import java.util.List;
 @Builder
 public final class DetailExpenseDTO implements Serializable {
 	private int id;
+
 	private double amount;
+
 	private String title;
+
 	private LocalDate date;
+
 	private String registeredBy;
+
 	private String payerUser;
+
 	private List<String> associatedUsersList;
 }

@@ -1,0 +1,7 @@
+Button {
+    -fx-background-color: #2196F3
+}
+
+.active {
+    -fx-background-color: #4CAF50
+}

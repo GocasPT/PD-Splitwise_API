@@ -9,10 +9,11 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/Client" />
             <option value="$PROJECT_DIR$/ClientAPI" />
             <option value="$PROJECT_DIR$/ClientRMI" />
             <option value="$PROJECT_DIR$/Server" />
-            <option value="$PROJECT_DIR$/Server_API_RMI" />
+            <option value="$PROJECT_DIR$/ServerAPI" />
             <option value="$PROJECT_DIR$/sharedLib" />
           </set>
         </option>

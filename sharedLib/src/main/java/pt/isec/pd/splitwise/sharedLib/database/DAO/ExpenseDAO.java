@@ -44,7 +44,8 @@ public class ExpenseDAO extends DAO {
 		//language=SQLite
 		String queryInsert = "INSERT INTO expenses (group_id, amount, description, date, paid_by_user_id, inserted_by_user_id) VALUES (?, ?, ?, ?, ?, ?) RETURNING id";
 
-		int id = dbManager.executeWriteWithId(queryInsert, groupId, amount, description, date, userPayerId, userInserterId);
+		int id = dbManager.executeWriteWithId(queryInsert, groupId, amount, description, date, userPayerId,
+		                                      userInserterId);
 		for (int userId : usersInvolvedId)
 			dbManager.getExpenseUserDAO().createRelation(id, userId);
 

@@ -3,6 +3,7 @@ module Splitwsie.sharedLib.main {
 	requires org.xerial.sqlitejdbc;
 	requires org.slf4j;
 	requires java.rmi;
+	requires jdk.jfr;
 
 	exports pt.isec.pd.splitwise.sharedLib.database;
 	exports pt.isec.pd.splitwise.sharedLib.database.DAO;

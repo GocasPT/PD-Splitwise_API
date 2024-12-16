@@ -15,8 +15,11 @@ import static pt.isec.pd.splitwise.sharedLib.terminal.utils.printProgress;
 
 public class BackupServerHandler implements Runnable {
 	private static final Logger logger = LoggerFactory.getLogger(BackupServerHandler.class);
+
 	private final Socket backupServerSocket;
+
 	private final DataBaseManager dbManager;
+
 	private final String host;
 
 	public BackupServerHandler(Socket backupServerSocket, DataBaseManager dbManager) {

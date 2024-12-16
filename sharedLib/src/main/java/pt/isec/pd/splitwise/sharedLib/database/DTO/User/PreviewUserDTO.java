@@ -13,6 +13,8 @@ import java.io.Serializable;
 @Builder
 public final class PreviewUserDTO implements Serializable {
 	private int id;
+
 	private String username;
+
 	private String email;
 }

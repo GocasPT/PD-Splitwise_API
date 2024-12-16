@@ -9,8 +9,11 @@ import java.util.Set;
 
 public class DatabaseSyncManager {
 	private static final Logger logger = LoggerFactory.getLogger(DatabaseSyncManager.class);
+
 	private final Object syncLock = new Object();
+
 	private final Set<Thread> waitingThreads = new HashSet<>();
+
 	private int activeBackupTransfers = 0;
 
 	public void startBackupTransfer() {

@@ -11,9 +11,13 @@ import java.util.Map;
 @AllArgsConstructor
 public final class DetailBalanceDTO implements Serializable {
 	private double totalExpended;
+
 	private double totalDebt;
+
 	private Map<String, Double> debtList;
+
 	private double totalReceive;
+
 	private Map<String, Double> receiveList;
 
 	public DetailBalanceDTO() {

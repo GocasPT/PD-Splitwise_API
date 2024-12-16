@@ -13,7 +13,10 @@ import java.io.Serializable;
 @Builder
 public final class PreviewInviteDTO implements Serializable {
 	private int id;
+
 	private String groupName;
+
 	private String guestEmail;
+
 	private String hostEmail; //TODO: host OR inviter?
 }

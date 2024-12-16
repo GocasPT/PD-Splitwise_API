@@ -11,6 +11,7 @@ import java.util.Map;
 @AllArgsConstructor
 public final class PreviewBalanceDTO implements Serializable {
 	private double totalBalance;
+
 	private Map<String, Double> usersBalance; //TODO: check this later
 
 	public PreviewBalanceDTO() {

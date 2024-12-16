@@ -13,12 +13,13 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class RMIService extends UnicastRemoteObject implements SplitwiseServiceInterface, RMIObserver {
 	private static final Logger logger = LoggerFactory.getLogger(RMIService.class);
+
 	private final DataBaseManager dbManager;
+
 	private final List<ObserverServiceInterface> observers;
 
 	public RMIService(DataBaseManager dbManager) throws RemoteException {
@@ -27,21 +28,19 @@ public class RMIService extends UnicastRemoteObject implements SplitwiseServiceI
 		dbManager.addRMIChangeObserver(this);
 	}
 
-	@Override public List<String> getUsers() throws RemoteException {
-		logger.info("RMIService.getUsers");
-
+	@Override
+	public List<String> getUsers() throws RemoteException {
 		try {
 			List<User> users = dbManager.getUserDAO().getAllUsers();
 			return users.stream().map(User::getEmail).toList();
 		} catch ( SQLException e ) {
-			logger.error("RMIService.getUsers: " + e.getMessage());
+			logger.error("RMIService.getUsers: {}", e.getMessage());
 			throw new RuntimeException(e);
 		}
 	}
 
-	@Override public List<String> getGroups() throws RemoteException {
-		logger.info("RMIService.getGroups");
-
+	@Override
+	public List<String> getGroups() throws RemoteException {
 		try {
 			List<Group> groups = dbManager.getGroupDAO().getAllGroups();
 			return groups.stream().map(Group::getName).toList();
@@ -51,47 +50,67 @@ public class RMIService extends UnicastRemoteObject implements SplitwiseServiceI
 		}
 	}
 
-	@Override public void addObserver(ObserverServiceInterface observer) throws RemoteException {
-		logger.info("RMIService.addObserver: observer: " + observer);
-
+	@Override
+	public void addObserver(ObserverServiceInterface observer) throws RemoteException {
+		logger.info("Adding RMIObserver {} ", observer);
 		observers.add(observer);
 	}
 
-	@Override public void removeObserver(ObserverServiceInterface observer) throws RemoteException {
-		logger.info("RMIService.removeObserver: observer: " + observer);
-
+	@Override
+	public void removeObserver(ObserverServiceInterface observer) throws RemoteException {
+		logger.info("Removing RMIObserver {} ", observer);
 		observers.remove(observer);
 	}
 
-	//TODO: pass registered user
-	@Override public void onRegiste(String email) throws RemoteException {
-		logger.debug("RMIService.onRegiste");
+	@Override
+	public void onRegiste(String email) {
+		logger.debug("Notifying RMIObservers onRegiste");
 
 		for (ObserverServiceInterface observer : observers)
-			observer.onRegiste(email);
+			try {
+				observer.onRegiste(email);
+			} catch ( RemoteException e ) {
+				logger.error("The RMIObserver {} is not reachable. Removing...", observer);
+				observers.remove(observer);
+			}
 	}
 
-	//TODO: pass logged in user
-	@Override public void onLogin(String email) throws RemoteException {
-		logger.debug("RMIService.onLogin");
+	@Override
+	public void onLogin(String email) {
+		logger.debug("Notifying RMIObservers onLogin");
 
 		for (ObserverServiceInterface observer : observers)
-			observer.onLogin(email);
+			try {
+				observer.onLogin(email);
+			} catch ( RemoteException e ) {
+				logger.error("The RMIObserver {} is not reachable. Removing...", observer);
+				observers.remove(observer);
+			}
 	}
 
-	//TODO: pass inserted expense
-	@Override public void onInsertExpense(String email, double amount) throws RemoteException {
-		logger.debug("RMIService.onInsertExpense");
+	@Override
+	public void onInsertExpense(String email, double amount) {
+		logger.debug("Notifying RMIObservers onInsertExpense");
 
 		for (ObserverServiceInterface observer : observers)
-			observer.onInsertExpense(email, amount);
+			try {
+				observer.onInsertExpense(email, amount);
+			} catch ( RemoteException e ) {
+				logger.error("The RMIObserver {} is not reachable. Removing...", observer);
+				observers.remove(observer);
+			}
 	}
 
-	//TODO: pass deleted expense
-	@Override public void onDeleteExpense(int id) throws RemoteException {
-		logger.debug("RMIService.onDeleteExpense");
+	@Override
+	public void onDeleteExpense(int id) {
+		logger.debug("Notifying RMIObservers onDeleteExpense");
 
 		for (ObserverServiceInterface observer : observers)
-			observer.onDeleteExpense(id);
+			try {
+				observer.onDeleteExpense(id);
+			} catch ( RemoteException e ) {
+				logger.error("The RMIObserver {} is not reachable. Removing...", observer);
+				observers.remove(observer);
+			}
 	}
 }

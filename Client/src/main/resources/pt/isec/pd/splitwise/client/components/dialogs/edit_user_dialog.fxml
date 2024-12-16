@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<DialogPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/20.0.1">
+    <content>
+        <VBox alignment="CENTER" spacing="3.0">
+            <HBox alignment="CENTER_RIGHT" spacing="5.0">
+                <Label text="Name:">
+                    <font>
+                        <Font size="18.0"/>
+                    </font>
+                </Label>
+                <TextField fx:id="tfName" HBox.hgrow="ALWAYS"/>
+            </HBox>
+            <HBox alignment="CENTER_RIGHT" spacing="5.0">
+                <Label text="Email:">
+                    <font>
+                        <Font size="18.0"/>
+                    </font>
+                </Label>
+                <TextField fx:id="tfEmail" HBox.hgrow="ALWAYS"/>
+            </HBox>
+            <HBox alignment="CENTER_RIGHT" spacing="5.0">
+                <Label text="Phone:">
+                    <font>
+                        <Font size="18.0"/>
+                    </font>
+                </Label>
+                <TextField fx:id="tfPhoneNumber" HBox.hgrow="ALWAYS"/>
+            </HBox>
+            <HBox alignment="CENTER_RIGHT" spacing="5.0">
+                <Label text="Password:">
+                    <font>
+                        <Font size="18.0"/>
+                    </font>
+                </Label>
+                <TextField fx:id="tfPassword" HBox.hgrow="ALWAYS"/>
+            </HBox>
+        </VBox>
+    </content>
+    <ButtonType fx:constant="FINISH" fx:id="btnFinish"/>
+</DialogPane>

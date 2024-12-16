@@ -1,7 +1,6 @@
 package pt.isec.pd.splitwise.server.Runnable;
 
 
-import lombok.ToString;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import pt.isec.pd.splitwise.server.Manager.SessionManager;
@@ -21,11 +20,17 @@ import java.net.SocketException;
 
 public class ClientHandler implements Runnable {
 	private static final Logger logger = LoggerFactory.getLogger(ClientHandler.class);
+
 	private final Socket clientSocket;
+
 	private final ObjectOutputStream out;
+
 	private final ObjectInputStream in;
+
 	private final SessionManager sessionManager;
+
 	private final DataBaseManager context;
+
 	private String email;
 
 	//TODO: improve exception handling
@@ -115,7 +120,8 @@ public class ClientHandler implements Runnable {
 		out.flush();
 	}
 
-	@Override public String toString() {
+	@Override
+	public String toString() {
 		return "ClientHandler@" + hashCode();
 	}
 }

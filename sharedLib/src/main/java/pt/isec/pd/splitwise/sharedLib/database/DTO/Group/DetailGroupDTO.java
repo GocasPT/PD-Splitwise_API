@@ -15,6 +15,8 @@ import java.util.List;
 @Builder
 public final class DetailGroupDTO implements Serializable { //TODO: check this later
 	private int id;
+
 	private String name;
+
 	private List<PreviewExpenseDTO> expenses;
 }

@@ -14,8 +14,12 @@ import java.time.LocalDate;
 @Builder
 public final class PreviewPaymentDTO implements Serializable {
 	private int id;
+
 	private double amount;
+
 	private LocalDate date;
+
 	private String payerUser;
+
 	private String receiverUser;
 }

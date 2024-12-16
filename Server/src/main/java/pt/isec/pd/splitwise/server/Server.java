@@ -20,15 +20,21 @@ import java.rmi.registry.Registry;
 
 public class Server {
 	public static final int TIMEOUT_CLIENT_SOCKET = 60;
+
 	private static final Logger logger = LoggerFactory.getLogger(Server.class);
+
 	private static final String RMI_REGISTRY = "localhost";
+
 	private static final int RMI_PORT = Registry.REGISTRY_PORT;
 
 	private final ServerSocket serverSocket;
+
 	private final SessionManager sessionManager;
+
 	private final DataBaseManager dbManager;
+
 	private final HeartbeatManager heartbeatManager;
-	private final RMIService rmiService;
+
 	private volatile boolean isRunning;
 
 	public Server(int listeningPort, String dbPath) {
@@ -42,7 +48,7 @@ public class Server {
 				throw new RuntimeException("Failed to add observer to DataBaseManager"); //TODO: improve this
 			}
 
-			rmiService = new RMIService(dbManager);
+			RMIService rmiService = new RMIService(dbManager);
 			registeRMIService(rmiService);
 
 			start();

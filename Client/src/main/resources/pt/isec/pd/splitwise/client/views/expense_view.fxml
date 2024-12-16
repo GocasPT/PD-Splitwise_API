@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+            prefHeight="600.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/20.0.1"
+            fx:controller="pt.isec.pd.splitwise.client.ui.controller.view.ExpenseController">
+    <top>
+        <VBox alignment="TOP_CENTER" spacing="8.0" BorderPane.alignment="CENTER">
+            <padding>
+                <Insets top="8.0"/>
+            </padding>
+            <Text fx:id="txtGroupName" strokeType="OUTSIDE" strokeWidth="0.0" text="Expense" textAlignment="CENTER">
+                <font>
+                    <Font name="System Bold" size="18.0"/>
+                </font>
+            </Text>
+            <Separator prefWidth="200.0"/>
+        </VBox>
+    </top>
+    <center>
+        <VBox alignment="TOP_CENTER" maxWidth="-Infinity" spacing="8.0" BorderPane.alignment="CENTER">
+            <padding>
+                <Insets top="64.0"/>
+            </padding>
+            <HBox alignment="CENTER_LEFT" spacing="8.0">
+                <Label minHeight="-Infinity" minWidth="-Infinity" text="Amount:">
+                    <font>
+                        <Font size="14.0"/>
+                    </font>
+                </Label>
+                <Text fx:id="tfAmount" HBox.hgrow="ALWAYS"/>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="254.0" spacing="8.0">
+                <Label minHeight="-Infinity" minWidth="-Infinity" text="Description:" HBox.hgrow="ALWAYS">
+                    <font>
+                        <Font size="14.0"/>
+                    </font>
+                </Label>
+                <Text fx:id="tfDescription" HBox.hgrow="ALWAYS"/>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="208.0" spacing="8.0">
+                <Label minHeight="-Infinity" minWidth="-Infinity" text="Date:">
+                    <font>
+                        <Font size="14.0"/>
+                    </font>
+                </Label>
+                <Text fx:id="tfDate" HBox.hgrow="ALWAYS"/>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="350.0" spacing="8.0">
+                <Label minHeight="-Infinity" minWidth="-Infinity" text="Payer:">
+                    <font>
+                        <Font size="14.0"/>
+                    </font>
+                </Label>
+                <Text fx:id="tfPayerUser" HBox.hgrow="ALWAYS"/>
+            </HBox>
+            <HBox alignment="TOP_CENTER" layoutX="10.0" layoutY="369.0" spacing="8.0">
+                <Label minHeight="-Infinity" minWidth="-Infinity" text="User associated:">
+                    <font>
+                        <Font size="14.0"/>
+                    </font>
+                </Label>
+                <Text fx:id="tfAssociatedUsers" HBox.hgrow="ALWAYS"/>
+            </HBox>
+            <BorderPane.margin>
+                <Insets left="64.0" right="64.0"/>
+            </BorderPane.margin>
+        </VBox>
+    </center>
+    <bottom>
+        <VBox alignment="BOTTOM_CENTER" spacing="8.0" BorderPane.alignment="CENTER">
+            <BorderPane.margin>
+                <Insets/>
+            </BorderPane.margin>
+            <padding>
+                <Insets bottom="12.0"/>
+            </padding>
+            <Separator prefWidth="200.0"/>
+            <HBox fx:id="hbBtn" alignment="BOTTOM_CENTER" spacing="12.0">
+                <Button fx:id="btnEdit" mnemonicParsing="false" text="Edit">
+                    <font>
+                        <Font size="14.0"/>
+                    </font>
+                </Button>
+                <Button fx:id="btnBack" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" text="Back">
+                    <font>
+                        <Font size="14.0"/>
+                    </font>
+                </Button>
+                <Button fx:id="btnDelete" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" text="Delete">
+                    <font>
+                        <Font size="14.0"/>
+                    </font>
+                </Button>
+            </HBox>
+        </VBox>
+    </bottom>
+</BorderPane>

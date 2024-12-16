@@ -8,7 +8,8 @@ import pt.isec.pd.splitwise.sharedLib.network.response.Response;
 import pt.isec.pd.splitwise.sharedLib.network.response.ValueResponse;
 
 public record GetPayment(int expenseId) implements Request {
-	@Override public Response execute(DataBaseManager context) {
+	@Override
+	public Response execute(DataBaseManager context) {
 		logger.debug("Getting payment with id {}", expenseId);
 
 		try {
@@ -28,7 +29,8 @@ public record GetPayment(int expenseId) implements Request {
 		}
 	}
 
-	@Override public String toString() {
+	@Override
+	public String toString() {
 		return "GET_PAYMENT " + expenseId;
 	}
 }

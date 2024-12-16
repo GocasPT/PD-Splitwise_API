@@ -7,6 +7,7 @@ import java.io.Serializable;
 @Getter
 public class Response implements Serializable {
 	private final boolean success;
+
 	private final String errorDescription;
 
 	public Response(boolean success) {
